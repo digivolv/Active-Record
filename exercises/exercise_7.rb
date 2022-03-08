@@ -10,3 +10,15 @@ puts "Exercise 7"
 puts "----------"
 
 # Your code goes here ...
+class Employee < ApplicationRecord
+  validates :first_name, presence:true 
+  validates :last_name, presence:true
+  validates :hourly_rate, {minimum : 40, maximum: 200}
+end
+
+@store_name = gets.chomp
+new_store = Store.create(name: @store_name)
+
+new_store.errors.messages.each { |message| 
+  puts message
+}
