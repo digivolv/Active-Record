@@ -3,5 +3,7 @@ class Employee < ActiveRecord::Base
   validates :store_id, presence:true
   validates :first_name, presence:true 
   validates :last_name, presence:true
-  validates :hourly_rate, {minimum : 40, maximum: 200, only_integer:true}
+  #Line below incompatable with this version of Ruby
+  # validates :hourly_rate, {minimum: 40, maximum: 200}
+  validates :hourly_rate, numericality: { in: 40..200 }
 end
